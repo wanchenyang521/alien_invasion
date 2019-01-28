@@ -1,9 +1,11 @@
 import pygame
+from pygame.sprite import Sprite
 
-class Ship():
+class Ship(Sprite):
 
     # 初始化飞船
     def __init__(self,ai_settings,screen):
+        super().__init__()
         self.screen = screen
         self.settings = ai_settings
         # 加载图像并获取其外接矩形
@@ -37,3 +39,8 @@ class Ship():
             self.bottom -= self.settings.ship_speed_factor
         self.rect.centerx = self.center
         self.rect.bottom = self.bottom
+
+    def center_ship(self):
+        self.center = self.screen_rect.centerx
+        self.bottom = self.screen_rect.bottom
+
